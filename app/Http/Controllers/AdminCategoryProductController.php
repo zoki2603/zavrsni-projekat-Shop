@@ -18,7 +18,8 @@ class AdminCategoryProductController extends Controller
     {
         // $category = new Category();
         $service = new CategoryService();
-        $success = $service->addCategory($request, new Category());
-        return $success ? redirect()->route("admin.show.home")->with(["message" => "Uspresno ste kreirali kategoriju"]) : redirect()->back()->with(["message" => "Niste kreirali kategoriju"]);
+        $service->addCategory($request, new Category());
+
+        return  redirect()->route("index.category")->with("success", "Uspješno ste kreirali kategoriju.");
     }
 }

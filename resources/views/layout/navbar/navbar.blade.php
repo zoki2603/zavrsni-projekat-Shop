@@ -3,15 +3,22 @@
        <a style="text-decoration: none" href="{{ route('home') }}"><h1>SHOP</h1></a>
     </div>
     <ul class="menu">
-        <?php
-        if (!isset($_SESSION["user"])) { ?>
+            @guest
             <li><a href="{{ route("user.show.login") }}">Login</a></li>
             <li><a href="{{ route("user.show.register") }}">Registar</a></li>
-        <?php } else { ?>
-            <li><a href="">Logout</a></li>
+            @endguest
+            
+            @auth
+          
+            <li>
+                <form action="{{ route("user.logout") }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-light">Logout</button>
+                </form>
+            </li>
             <li><a href="">Home</a></li>
             <li><a href=""><span></span><i class="fas fa-shopping-cart"></i></a></li>
-        <?php } ?>
+            @endauth
         <div class="menu-btn">
             <i class="fa fa-bars"></i>
         </div>

@@ -11,6 +11,17 @@
             <h2 class="form-weight-bold">Add Category Name</h2>
             <hr class="hr">
         </div>
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
         <div class="container text-center row justify-content-md-center">
             <form action="{{ route("addCategory") }}" class="row justify-content-md-center" method="post">
                 @csrf

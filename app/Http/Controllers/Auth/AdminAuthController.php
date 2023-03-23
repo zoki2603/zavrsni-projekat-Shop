@@ -35,7 +35,7 @@ class AdminAuthController extends Controller
                 'email' => 'Podaci nisu dobri',
             ]);
     }
-    public function logout(Request $request)
+    public function logout()
     {
         $service = new AuthenticationService();
 

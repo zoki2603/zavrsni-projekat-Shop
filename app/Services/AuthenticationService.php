@@ -31,7 +31,7 @@ class AuthenticationService
     {
         return Auth::guard($guard)->attempt([
             'email' => $email,
-            'password' => $password
+            'password' => $password,
         ]);
     }
 

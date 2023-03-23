@@ -12,8 +12,9 @@ class CategoryService
 
     public function addCategory(CategoryRequest $request, Category $category)
     {
-        $category->name = $request->input("name");
 
-        $category->save();
+        $category->name = $request->input("name");
+        $success = $category->save();
+        return $success ? true : false;
     }
 }

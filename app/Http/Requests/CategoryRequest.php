@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
@@ -19,10 +20,22 @@ class CategoryRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
+
+
     public function rules(): array
     {
+        $categoryId = null;
+        if ($this->category) {
+            $categoryId = $this->category->id;
+        }
+
         return [
-            "name" => ["required", "string", "max:255"]
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('categories')->ignore($categoryId)
+            ],
         ];
     }
 }

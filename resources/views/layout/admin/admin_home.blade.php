@@ -9,7 +9,7 @@
     <h1 class="pheading">ADMIN</h1>
     <table>
         <tr>
-            <a href="addProduct.php" style="margin-left: 15px;"> <input type="submit" name="" value="Add Product" class="btn btn-success btn-lg mb-1"></a>
+            <a href="{{ route("show.add.product") }}" style="margin-left: 15px;"> <input type="submit" name="" value="Add Product" class="btn btn-success btn-lg mb-1"></a>
             <a href="{{ route("index.category") }}"> <input type="submit" name="" value="Add Category" class="btn btn-primary btn-lg"></a>
         </tr>
     </table>
