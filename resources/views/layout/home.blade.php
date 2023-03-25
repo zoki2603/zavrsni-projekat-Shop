@@ -3,6 +3,8 @@
 @extends("layout.master")
 @extends('layout.navbar.navbar')
 
+
+
 @section('navbar')
     
 @endsection
@@ -17,6 +19,10 @@
     </section>
 
     <h1 class="pheading">All Products</h1>
+
+  
+    
+
     <div class="container  ">
         <div class="row justify-content-center align-items-center g-2 ">
             <div class="col">
@@ -49,13 +55,13 @@
            @foreach ($products as $product) 
           
                 <div class="card">
-                    <div class="img"><img style="width: 100%;" src="..//img/<?php// echo $product["image"] ?>" alt=""></div>
+                    <div class="img"><img style="width: 100%;" src="{{ asset("storage/img/$product->image") }}" alt=""></div>
 
                     <div class="title">{{ $product->name }}</div>
                     <div class="box">
                         <div class="price">{{ $product->price }}$</div>
                         @auth
-                            <a href="singleProduct.php?id=<?php //echo $product["id"] ?>"><button class="btn" name="buy-now">Buy Now</button></a>
+                            <a href="{{ route("show.single.product",$product) }}"<button class="btn" name="buy-now">Buy Now</button></a>
                        @endauth
                     </div>
                 </div>
@@ -64,7 +70,7 @@
             
         </div>
     </sectoin>
-    <span class="text-center"> {{ $products->links() }}</span>
+    <span style="margin-left: 50%" class="text-center"> {{ $products->links() }}</span>
     <style>
      .w-5{
          display: none;
@@ -75,5 +81,5 @@
     </footer>
 
 
-
+   
 @endsection

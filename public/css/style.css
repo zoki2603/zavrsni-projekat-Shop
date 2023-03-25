@@ -191,3 +191,89 @@ footer p a{
         left: 0;
     }
 }
+
+
+/* Stilizacija slike proizvoda */
+.img-fluid {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Stilizacija imena i cene */
+  h2, h3 {
+    margin-top: 0;
+  }
+  
+  h3 {
+    color: #ff6600;
+  }
+  
+  /* Stilizacija opisa proizvoda */
+  p {
+    font-size: 1.1rem;
+  }
+  
+  /* Stilizacija kontrola količine */
+  .form-group label {
+    font-size: 1.1rem;
+  }
+  
+  .form-control {
+    display: inline-block;
+    width: 70px;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+  /* Stilizacija dugmeta za dodavanje u korpu */
+.btn-primary {
+    font-size: 1.2rem;
+    background-color: #ff6600;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #e55d00;
+}
+
+
+.table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .table td img {
+    max-width: 100px;
+  }
+  
+  .table td:nth-child(3),
+  .table td:nth-child(5) {
+    font-weight: bold;
+  }
+  
+  .table td:nth-child(5) {
+    color: #ff6600;
+  }
+  
+  .table td:last-child button {
+    margin-top: 0;
+  }
+  
+  .text-right {
+    margin-top:
+    20px;
+}
+
+@media (max-width: 576px) {
+.table td:nth-child(2),
+.table td:nth-child(3),
+.table td:nth-child(5) {
+display: none;
+}
+
+.table td:nth-child(4) {
+width: 100%;
+}
+
+.table td:last-child button {
+margin-top: 10px;
+}
+}  

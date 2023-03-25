@@ -9,17 +9,17 @@
             @endguest
             
             @auth
-          
+            <li><a href="{{ route("home") }}">Home</a></li>
             <li>
                 <form action="{{ route("user.logout") }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-light">Logout</button>
                 </form>
             </li>
-            <li><a href="">Home</a></li>
-            <li><a href=""><span></span><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="{{ route("index.cart") }}"><span></span><i class="fas fa-shopping-cart"></i></a></li>
             @endauth
         <div class="menu-btn">
             <i class="fa fa-bars"></i>
         </div>
 </nav>
+

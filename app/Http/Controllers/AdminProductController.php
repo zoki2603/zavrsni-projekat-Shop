@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 
 class AdminProductController extends Controller
 {
@@ -16,8 +17,9 @@ class AdminProductController extends Controller
     }
     public function create()
     {
+        $categories = Category::all();
 
-        return view("layout.admin.product.product");
+        return view("layout.admin.product.product", ["categories" => $categories]);
     }
 
     public function storeProduct(ProductRequest $request)
@@ -25,6 +27,6 @@ class AdminProductController extends Controller
         $product = new Product();
         $service = new ProductService();
         $success = $service->storeProduct($request, $product);
-        return $success ? redirect()->route("")->with(["message" => "Podaci su uspesno sacuvani"]) : redirect()->back()->with(["message" => "Proizvod nije usporesno sacuvan"]);
+        return redirect()->route("show.add.product")->with(["success" => "Podaci su uspesno sacuvani"]);
     }
 }

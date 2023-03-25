@@ -5,12 +5,17 @@
 @endsection
 @section("main-content")
     <section class="col-6 ">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="container text-center  mt-3 pt-5">
             <h2 class="form-weight-bold">Add Product</h2>
             <hr class="hr">
         </div>
         <div class="container text-center row justify-content-md-center">
-            <form action="../controler/AdminController.php" class="row justify-content-md-center" method="post" enctype="multipart/form-data">
+            <form action="{{ route("store.product") }}" class="row justify-content-md-center" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -32,11 +37,11 @@
                     <label class="" for="category">Category</label>
                     <select class="form-select" name="category_id" id="category">
 
-                        <?php
-                        foreach ($categorys as $cat) { ?>
-                            <option value="<?php echo $cat["id"] ?>"><?php echo $cat["name"] ?></option>
+                        
+                        @foreach ($categories as $cat) 
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
 
-                        <?php } ?>
+                        @endforeach
 
 
                     </select>

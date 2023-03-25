@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminCategoryProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ Route::middleware(["guest:web"])->group(function () {
 });
 Route::middleware(["auth:web"])->group(function () {
     Route::post('/user/logout', [UserAuthController::class, "logout"])->name("user.logout");
+    Route::get("/user/product/{product}", [ProductController::class, "showSingleProduct"])->name("show.single.product");
+    Route::get("/user/cart", [CartController::class, "index"])->name("index.cart");
+    Route::post("/user/cart/{product}", [CartController::class, "addToCart"])->name("add.to.cart");
+    Route::get("/user/cart/{product}", [CartController::class, "delete"])->name("delete.cart");
+    Route::delete("/user/cart", [CartController::class, "emptyCart"])->name("delete.cart.all");
 });
 
 
@@ -35,4 +41,5 @@ Route::middleware(["auth:admin"])->group(function () {
     Route::get("/admin/product-category", [AdminCategoryProductController::class, "index"])->name("index.category");
     Route::post("/admin/product-category", [AdminCategoryProductController::class, "addCategory"])->name("addCategory");
     Route::get("/admin/add-product", [AdminProductController::class, "create"])->name("show.add.product");
+    Route::post("/admin/add-product", [AdminProductController::class, "storeProduct"])->name("store.product");
 });

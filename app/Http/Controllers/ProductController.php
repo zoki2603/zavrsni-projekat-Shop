@@ -17,4 +17,8 @@ class ProductController extends Controller
         $products  = Product::paginate(8);
         return view('layout.home', ["products" => $products]);
     }
+    public function showSingleProduct(Product $product)
+    {
+        return view("layout.user.product.single_product", ["product" => $product]);
+    }
 }
