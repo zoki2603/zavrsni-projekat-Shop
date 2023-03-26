@@ -43,4 +43,9 @@ class AdminProductController extends Controller
         $service->storeProduct($request, $product);
         return redirect()->route("admin.index")->with("success", "Uspješno ste azurirali proizvod.");
     }
+    public function delete(Product $product)
+    {
+        $product->delete();
+        return redirect()->back()->with("success", "Proizvd je uspsno obrisan");
+    }
 }

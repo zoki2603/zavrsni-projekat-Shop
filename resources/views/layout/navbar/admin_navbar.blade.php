@@ -6,7 +6,7 @@
         @auth
         <li><a href="purchase.php">Purchase</a></li>
         <li><a href="adminRegister.php">Registar</a></li>
-        <li><a href="admin.php">Admin</a></li>
+        <li><a href="{{ route("admin.index") }}">Admin</a></li>
         <li>
             <form action="{{ route("admin.logout") }}" method="POST">
                 @csrf

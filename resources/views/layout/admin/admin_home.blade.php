@@ -42,7 +42,8 @@
                 </thead>
                 <tbody>
                     @foreach ( $products as $key=> $product)
-                        <form action="" method="POST">
+                        {{-- <form action="" method="POST"> --}}
+                            
                             <tr>
                                 <th scope="row">{{ $key+1 }}</th>
                                 <td><img src="{{ asset("storage/img/$product->image") }}" alt="" width="150"></td>
@@ -50,15 +51,18 @@
                                 <td>{{ $product->price }}$</td>
                                 <td>{{ $product->quantity }}</td>
                                 <td>{{ $product->description }}</td>
-                                <td><a href="{{ route("admin.edit",$product->id) }}" class="btn btn-info">Edit</a></td>
-                                <td><input type="submit" name="deleteProduct" value="Delete" class="btn btn-danger"></td>
-                                <input type="hidden" name="id" value="<?php //echo $product["id"] ?>" class="btn btn-info">
+                                 <td><a href="{{ route("admin.edit",$product->id) }}" class="btn btn-info">Edit</a></td>
+                                  {{-- </form> --}}
+                                 <td>
+                                    <form action="{{ route("admin.delete.product",$product->id) }}" method="POST">
+                                        @csrf
+                                        @method("delete")
+                                        <input type="submit" class="btn btn-danger" name="deleteProduct" value="Delete" ></td>
+                                    </form>
+                                   
                             </tr>
-                        </form>
+                      
                     @endforeach
-                    {{-- <?php// } ?> --}}
-
-
                     </tr>
                 </tbody>
             </table>
