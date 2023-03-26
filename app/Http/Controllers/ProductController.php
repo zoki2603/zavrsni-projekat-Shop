@@ -21,4 +21,20 @@ class ProductController extends Controller
     {
         return view("layout.user.product.single_product", ["product" => $product]);
     }
+    public function buyAllProduct()
+    {
+        $cartItems = session()->get('cartItems', []);
+        $service = new ProductService();
+        // dd($cartItems);
+        $service->buy($cartItems);
+        session()->forget('cartItems');
+        return redirect()->route("home");
+    }
+    public function store(ProductRequest $request)
+    {
+        $service = new ProductService();
+        $product = new Product();
+        $service->storeProduct($request, $product);
+        return redirect()->route("home");
+    }
 }

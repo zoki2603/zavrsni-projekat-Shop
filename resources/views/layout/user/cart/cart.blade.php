@@ -52,8 +52,10 @@
       </tbody>
     </table>
     <div class="text-right">
-      <a href="{{ route('delete.cart.all') }}" class="btn btn-danger">Izbriši celu korpu</a>
-      <button class="btn btn-primary">Sačuvaj kupovinu</button>
+      {{-- <a href="{{ route('delete.cart.all') }}" class="btn btn-danger">Izbriši celu korpu</a> --}}
+      <form action="{{ route('store.buy.product') }}">
+        <button class="btn btn-primary">Sačuvaj kupovinu</button>
+      </form>
     </div>
   </div>
 

@@ -27,7 +27,7 @@ class UserAuthController extends Controller
         $user = new User();
         $success = $service->register($request, $user);
 
-        return $success ? redirect()->route('user.show.login') : redirect()->back()->with(["message" => 'Niste lepo popunili formu']);
+        return  redirect()->route('user.show.login');
     }
 
 

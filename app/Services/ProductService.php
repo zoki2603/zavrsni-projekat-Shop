@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Models\Purchase;
+use Illuminate\Support\Facades\Auth;
 
 class ProductService
 {
@@ -23,5 +25,24 @@ class ProductService
             $product->image = $imageName;
         }
         $product->save();
+    }
+
+    public function buy($cartItems)
+    {
+        // $cartItems = session()->get('cartItems', []);
+
+        foreach ($cartItems as $item) {
+            $total = 0;
+            $total += $item['price'] * $item['quantity'];
+
+            $purchase = new Purchase();
+            $purchase->id_user = Auth::user()->id;
+            $purchase->id_product = $item['id'];
+            $purchase->price = $item['price'];
+            $purchase->quantity = $item['quantity'];
+            $purchase->total_price = $total;
+            $purchase->date = now()->format('Y-m-d H:i:s');
+            $purchase->save();
+        }
     }
 }

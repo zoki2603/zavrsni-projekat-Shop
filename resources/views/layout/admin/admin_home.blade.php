@@ -31,8 +31,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Naziv</th>
                         <th scope="col">Slika</th>
+                        <th scope="col">Naziv</th>
                         <th scope="col">Cena</th>
                         <th scope="col">Kolicina</th>
                         <th scope="col">Opis</th>
@@ -41,22 +41,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php //foreach ($products as $key => $product) { ?>
-
-                        <form action="../controler/AdminController.php" method="POST">
+                    @foreach ( $products as $key=> $product)
+                        <form action="" method="POST">
                             <tr>
-                                <th scope="row"><?php //echo $key + 1 ?></th>
-                                <td><?php// echo $product["name"] ?></td>
-                                <td><img src="../img/<?php// echo $product["image"] ?>" alt="" width="150"></td>
-                                <td><?php //echo $product["price"] ?>$</td>
-                                <td><?php// echo $product["quantity"] ?></td>
-                                <td><?php //echo $product["description"] ?></td>
-                                <td><a href="updateProduct.php?id=<?php //echo $product["id"] ?>" class="btn btn-info">Edit</a></td>
+                                <th scope="row">{{ $key+1 }}</th>
+                                <td><img src="{{ asset("storage/img/$product->image") }}" alt="" width="150"></td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->price }}$</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->description }}</td>
+                                <td><a href="{{ route("admin.edit",$product->id) }}" class="btn btn-info">Edit</a></td>
                                 <td><input type="submit" name="deleteProduct" value="Delete" class="btn btn-danger"></td>
                                 <input type="hidden" name="id" value="<?php //echo $product["id"] ?>" class="btn btn-info">
                             </tr>
                         </form>
-
+                    @endforeach
                     {{-- <?php// } ?> --}}
 
 

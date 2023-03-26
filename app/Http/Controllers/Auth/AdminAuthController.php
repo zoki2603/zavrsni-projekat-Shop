@@ -14,10 +14,7 @@ class AdminAuthController extends Controller
     {
         return view("layout.admin.admin_login");
     }
-    public function adminHome()
-    {
-        return view("layout.admin.admin_home");
-    }
+
     public function login(LoginRequest $request)
     {
 
@@ -30,7 +27,7 @@ class AdminAuthController extends Controller
         );
 
         return $success ?
-            redirect()->route("admin.show.home") :
+            redirect()->route("admin.index") :
             redirect()->back()->withErrors([
                 'email' => 'Podaci nisu dobri',
             ]);

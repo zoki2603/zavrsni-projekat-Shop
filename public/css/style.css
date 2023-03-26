@@ -214,16 +214,16 @@ footer p a{
   }
   
   /* Stilizacija kontrola količine */
-  .form-group label {
+  /* .form-group label {
     font-size: 1.1rem;
-  }
+  } */
   
-  .form-control {
+  /* .form-control {
     display: inline-block;
     width: 70px;
     margin-right: 10px;
     font-size: 1.1rem;
-}
+} */
   /* Stilizacija dugmeta za dodavanje u korpu */
 .btn-primary {
     font-size: 1.2rem;

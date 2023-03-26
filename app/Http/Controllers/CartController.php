@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -61,9 +62,9 @@ class CartController extends Controller
             return redirect()->back();
         }
     }
-    public function emptyCart()
-    {
-        session()->forget('cartItems');
-        return redirect()->back();
-    }
+    // public function emptyCart()
+    // {
+    //     Session::forget('cartItems');
+    //     return redirect()->back();
+    // }
 }

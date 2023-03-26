@@ -16,10 +16,10 @@
                     <button type="submit" class="btn btn-light">Logout</button>
                 </form>
             </li>
-            <li><a href="{{ route("index.cart") }}"><span></span><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="{{ route("cart.index") }}"><span></span><i class="fas fa-shopping-cart"></i></a></li>
             @endauth
         <div class="menu-btn">
             <i class="fa fa-bars"></i>
         </div>
-</nav>
+</nav
 
