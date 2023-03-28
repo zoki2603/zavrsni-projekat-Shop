@@ -13,7 +13,7 @@ class Product extends Model
         "price",
         "image",
         "description",
-        "quantity"
+        "total_quantity"
     ];
 
     public function category()

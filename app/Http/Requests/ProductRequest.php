@@ -25,9 +25,9 @@ class ProductRequest extends FormRequest
         return [
             "name" => ["required", "string", "max:255"],
             "price" => ["required", "numeric", "min:0"],
-            "image" => ["nullable", "file", "mimes:png,jpg"],
+            "image" => ["nullable", "file", "mimes:png,jpg,jpeg"],
             "description" => ["required", "string"],
-            "quantity" => ["required", "numeric", "min:0"],
+            "total_quantity" => ["required", "numeric", "min:0"],
             "category_id" => ["required", "integer", Rule::exists("categories", "id")]
         ];
     }

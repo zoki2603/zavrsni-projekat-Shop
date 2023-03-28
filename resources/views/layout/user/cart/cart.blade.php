@@ -15,7 +15,11 @@
 <h1 class="pheading">SHOPING CART</h1>
 
 
-
+@if (session('message'))
+<div class="alert alert-success">
+    {{ session('message') }}
+</div>
+@endif
 <div class="container">
     <h2>Moja korpa</h2>
     <table class="table table-striped">
@@ -38,7 +42,10 @@
           <td><img src="{{ asset('storage/img/' . $item['image']) }}" class="img-thumbnail" alt="Proizvod 1"></td>
           <td>{{ $item['name'] }}</td>
           <td>${{ $item['price'] }}</td>
-          <td>{{ $item['quantity'] }}</td>
+          <td>{{ $item['quantity'] }} 
+              @if ($errors->has('quantity'))
+            <p>{{ $errors->first('quantity') }}</p>
+        @endif</td>
           <td>${{$item['price']* $item['quantity'] }}</td>
           <td><a href="{{ route('delete.cart',$id) }}"class="btn btn-danger">Izbriši</a></td>
         </tr>

@@ -19,6 +19,7 @@ class ProductController extends Controller
     }
     public function showSingleProduct(Product $product)
     {
+
         return view("layout.user.product.single_product", ["product" => $product]);
     }
     public function buyAllProduct()

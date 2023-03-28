@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCategoryProductController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminPurchaseController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\CartController;
@@ -47,4 +48,6 @@ Route::middleware(["auth:admin"])->group(function () {
     Route::get("/admin/edit/{product}", [AdminProductController::class, "edit"])->name("admin.edit");
     Route::patch("/admin/update/{product}", [AdminProductController::class, "update"])->name("admin.update");
     Route::delete("/admin/delete/{product}", [AdminProductController::class, "delete"])->name("admin.delete.product");
+    Route::get("/admin/all-purchases", [AdminPurchaseController::class, "allPurchases"])->name("all.purchases");
+    Route::get("/admin/purchase/{order_id}", [AdminPurchaseController::class, "singlePurchase"])->name("single.purchase");
 });

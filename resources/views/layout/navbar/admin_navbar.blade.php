@@ -4,9 +4,8 @@
     </div>
     <ul class="menu">
         @auth
-        <li><a href="purchase.php">Purchase</a></li>
-        <li><a href="adminRegister.php">Registar</a></li>
         <li><a href="{{ route("admin.index") }}">Admin</a></li>
+        <li><a href="{{ route("all.purchases") }}">Purchase</a></li>
         <li>
             <form action="{{ route("admin.logout") }}" method="POST">
                 @csrf

@@ -277,3 +277,8 @@ width: 100%;
 margin-top: 10px;
 }
 }  
+
+#verifikuj-btn:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}

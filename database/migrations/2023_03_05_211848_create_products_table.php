@@ -17,7 +17,7 @@ return new class extends Migration
             $table->float("price");
             $table->string("image")->nullable();
             $table->text("description");
-            $table->integer("quantity")->nullable();
+            $table->integer("total_quantity")->nullable();
             $table->foreignId("category_id")->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');
