@@ -6,6 +6,7 @@
         @auth
         <li><a href="{{ route("admin.index") }}">Admin</a></li>
         <li><a href="{{ route("all.purchases") }}">Purchase</a></li>
+        <li><a href="{{ route("employee.show.register") }}">Register Employee</a></li>
         <li>
             <form action="{{ route("admin.logout") }}" method="POST">
                 @csrf

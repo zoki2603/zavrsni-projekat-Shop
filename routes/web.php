@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\AdminCategoryProductController;
-use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\AdminPurchaseController;
-use App\Http\Controllers\Auth\AdminAuthController;
-use App\Http\Controllers\Auth\UserAuthController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminPurchaseController;
+use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\Auth\AuthEmployeeController;
+use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\AdminCategoryProductController;
 
 
 
@@ -50,4 +52,14 @@ Route::middleware(["auth:admin"])->group(function () {
     Route::delete("/admin/delete/{product}", [AdminProductController::class, "delete"])->name("admin.delete.product");
     Route::get("/admin/all-purchases", [AdminPurchaseController::class, "allPurchases"])->name("all.purchases");
     Route::get("/admin/purchase/{order_id}", [AdminPurchaseController::class, "singlePurchase"])->name("single.purchase");
+    Route::get('/admin/employee-register', [AuthEmployeeController::class, "registerShow"])->name("employee.show.register");
+    Route::post('/admin/employee-register', [AuthEmployeeController::class, "register"])->name('employee.register');
+});
+Route::middleware(["guest:employee"])->group(function () {
+    Route::get('/employee/login', [AuthEmployeeController::class, "showLoginEmployee"])->name("employee.show.login");
+});
+Route::middleware(["auth:employee,admin"])->group(function () {
+    Route::post('/employee/login', [AuthEmployeeController::class, "loginEmployee"])->name("employee.login");
+    Route::get("/employee/dashbord", [EmployeeController::class, "employeeDashbord"])->name("dashbord");
+    Route::get("/employee/order/{order_id}", [EmployeeController::class, "order"])->name("order");
 });
