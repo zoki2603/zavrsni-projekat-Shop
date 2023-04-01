@@ -26,12 +26,12 @@ class AuthEmployeeController extends Controller
             $request->input("email"),
             $request->input("password")
         );
-        dd($success);
+
         return $success ? redirect()->route("dashbord") : redirect()->back()->with([
             'email' => "Podaci nisu dobri"
         ]);
     }
-    public function logout()
+    public function logoutEmployee()
     {
         $service = new AuthenticationService();
 

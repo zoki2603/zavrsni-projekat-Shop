@@ -20,15 +20,17 @@
                 <tbody>
 
                      @foreach ($orders as $key => $order) 
-            
+                    
                         <tr>
                             <th scope="row">{{ $key +1 }}</th>
                             <td>{{ $order->first_name. ' '. $order->last_name }}</td>
                             <td>{{ $order->date }}</td>
                            
                             <td>
-                                <a href="{{ route("order",$order->id_order) }}"> <input type="submit" name="onePurchase" class="btn btn-info" value="View Purchase"></a>
-                                
+                                <a href="{{ route("order",$order->id_order) }}"> <input type="submit" name="onePurchase" class= "btn btn-info"   value="View Purchase"></a>
+                                @if($order->status === 'ready')
+                                <span class="badge bg-warning text-dark">send</span>
+                            @endif
                             </td>
                         </tr>
                    @endforeach

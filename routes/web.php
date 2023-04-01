@@ -54,12 +54,18 @@ Route::middleware(["auth:admin"])->group(function () {
     Route::get("/admin/purchase/{order_id}", [AdminPurchaseController::class, "singlePurchase"])->name("single.purchase");
     Route::get('/admin/employee-register', [AuthEmployeeController::class, "registerShow"])->name("employee.show.register");
     Route::post('/admin/employee-register', [AuthEmployeeController::class, "register"])->name('employee.register');
+    Route::post("/admin/send-mail/{order_id}", [AdminPurchaseController::class, "sendMail"])->name("send.order.mail");
+    Route::patch("/admin/order/{order_id}", [EmployeeController::class, "sendOrder"])->name("send.order");
 });
 Route::middleware(["guest:employee"])->group(function () {
     Route::get('/employee/login', [AuthEmployeeController::class, "showLoginEmployee"])->name("employee.show.login");
+    Route::post('/employee/login', [AuthEmployeeController::class, "loginEmployee"])->name("employee.login");
 });
 Route::middleware(["auth:employee,admin"])->group(function () {
-    Route::post('/employee/login', [AuthEmployeeController::class, "loginEmployee"])->name("employee.login");
     Route::get("/employee/dashbord", [EmployeeController::class, "employeeDashbord"])->name("dashbord");
     Route::get("/employee/order/{order_id}", [EmployeeController::class, "order"])->name("order");
+    Route::patch("/employee/order/{order_id}", [EmployeeController::class, "sendOrder"])->name("send.order");
+});
+Route::middleware(["auth:employee"])->group(function () {
+    Route::post('/employee/logout', [AuthEmployeeController::class, "logoutEmployee"])->name("employee.logout");
 });

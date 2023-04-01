@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->float("total_price");
             $table->dateTime("date");
-            $table->enum("status", ["processing", "ready"])->default("processing");
+            $table->enum("status", ["processing", "ready", "send"])->default("processing");
             $table->timestamps();
 
             $table->foreign('id_product')->references('id')->on('products')->cascadeOnDelete();

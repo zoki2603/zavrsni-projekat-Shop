@@ -13,7 +13,7 @@ class PurchaseService
 
         $allPurchase = DB::table("purchases")
             ->join("users", "purchases.id_user", "=", "users.id")
-            ->select(DB::raw('distinct purchases.date'), 'users.first_name', 'users.last_name', 'id_order', 'purchases.date')
+            ->select(DB::raw('distinct purchases.date'), 'users.first_name', 'users.last_name', 'status', 'id_order', 'purchases.date')
             ->orderByDesc('purchases.date')
             ->get();
         return $allPurchase;
@@ -32,5 +32,14 @@ class PurchaseService
             return null;
         }
         return $onePurchase;
+    }
+
+    public function updateOrderStatus($order_id)
+    {
+        $purchases = Purchase::where('id_order', $order_id)->get();
+        foreach ($purchases as $purchase) {
+            $purchase->status = 'send';
+            $purchase->save();
+        }
     }
 }

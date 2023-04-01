@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Employee;
 use Illuminate\Http\Request;
 use App\Services\PurchaseService;
 use App\Http\Controllers\Controller;
+use App\Services\EmployeeService;
 
 class EmployeeController extends Controller
 {
@@ -22,5 +23,13 @@ class EmployeeController extends Controller
 
 
         return view("layout.employee.order", ["orders" => $orders]);
+    }
+
+    public function sendOrder($order_id)
+    {
+        $service = new EmployeeService();
+        $service->updateOrderStatus($order_id);
+
+        return redirect()->route("dashbord");
     }
 }

@@ -28,11 +28,13 @@
             </thead>
             <tbody>
           {{-- @dump($singel_purchase) --}}
-          @foreach ($orders as $order )
-            
-      
+          @foreach ($orders as $key=> $order )
+          <form action="{{ route("send.order",$order->id_order) }}" method="POST">
+            @csrf
+                  @method("PATCH")
+    {{-- @dump($order) --}}
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $order->first_name. ' '.$order->last_name }}</td>
                 <td>{{ $order->city }}</td>
                 <td>{{ $order->address }}</td>
@@ -43,15 +45,16 @@
                 <td>{{ $order->total_price }}</td>
                 <td>{{ $order->date }}</td>
                 <td>{{ $order->status }}</td>
-              
+            
                @endforeach
                 <td>   
-                  <button type="button" class="btn btn-success" {{ $order->status === "processing" ? 'disabled' : " " }}>
-                    <i class="fas fa-check"></i> Verifikuj
+                 
+                  
+                  <input type="hidden" name="order_id" value="{{ $order->id_product }}">
+                  <button type="submit" class="btn btn-warning"{{ $order->status === "ready" ? 'disabled' : " " }}>
+                    <i class="fas fa-truck"></i> Send
                   </button>
-                  <button type="button" class="btn btn-warning"{{ $order->status === "ready" ? 'disabled' : " " }}>
-                    <i class="fas fa-truck"></i> Pošalji u magacin
-                  </button>
+                    </form>
                 </td>
               </tr>
 

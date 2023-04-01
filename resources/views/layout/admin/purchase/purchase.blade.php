@@ -20,7 +20,7 @@
                 <tbody>
 
                      @foreach ($purchases as $key => $purchase) 
-            
+            {{-- @dump($purchase) --}}
                         <tr>
                             <th scope="row">{{ $key +1 }}</th>
                             <td>{{ $purchase->first_name. ' '. $purchase->last_name }}</td>
@@ -28,7 +28,12 @@
                            
                             <td>
                                 <a href="{{ route("single.purchase",$purchase->id_order) }}"> <input type="submit" name="onePurchase" class="btn btn-info" value="View Purchase"></a>
-                                
+                                @if($purchase->status === 'ready')
+                                    <span class="badge bg-warning text-dark">1</span>
+                                @endif
+                                @if($purchase->status === 'send')
+                                <span class="badge bg-success">send</span>
+                            @endif
                             </td>
                         </tr>
                    @endforeach

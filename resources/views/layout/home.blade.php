@@ -20,9 +20,24 @@
 
     <h1 class="pheading">All Products</h1>
 
-  
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <form action="" method="GET" class="d-flex">
+          <input type="text" name="search" class="form-control me-2" placeholder="Pretraži proizvode">
+          <button type="submit" class="btn btn-primary">Pretraži</button>
+        </form>
+      
+        <form action="" method="GET" class="d-flex">
+          <select name="sort_by" class="form-select me-2" onchange="this.form.submit()">
+            <option value="">Sortiraj po:</option>
+            <option value="name_asc">Naziv proizvoda (A-Z)</option>
+            <option value="name_desc">Naziv proizvoda (Z-A)</option>
+            <option value="price_asc">Cena (najniža prvo)</option>
+            <option value="price_desc">Cena (najviša prvo)</option>
+          </select>
+        </form>
+      </div>
     
-
+{{-- 
     <div class="container  ">
         <div class="row justify-content-center align-items-center g-2 ">
             <div class="col">
@@ -46,7 +61,7 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
-    </div>
+    </div> --}}
     <sectoin class="sec">
         <div class="products">
             <!-- Start Card -->
@@ -54,7 +69,7 @@
            
            @foreach ($products as $product) 
           
-                <div class="card">
+                <div  class="card ">
                     <div class="img"><img style="width: 100%;" src="{{ asset("storage/img/$product->image") }}" alt=""></div>
 
                     <div class="title">{{ $product->name }}</div>
