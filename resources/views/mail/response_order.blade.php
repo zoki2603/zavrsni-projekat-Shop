@@ -58,7 +58,7 @@
 		<tbody>  
             @foreach ($purchases as $purchase )
 			<tr>
-				<td>{{ $purchase->name }}</td>
+				<td>{{ $purchase->product->name }}</td>
 				<td>{{ $purchase->price }}</td>
 			</tr>
 		

@@ -31,6 +31,9 @@
                                 @if($order->status === 'ready')
                                 <span class="badge bg-warning text-dark">send</span>
                             @endif
+                            @if ($order->status === "processing")
+                            <span class="badge bg-danger">1</span>
+                            @endif
                             </td>
                         </tr>
                    @endforeach

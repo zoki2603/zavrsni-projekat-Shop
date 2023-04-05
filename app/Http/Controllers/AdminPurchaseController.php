@@ -30,14 +30,17 @@ class AdminPurchaseController extends Controller
 
     public function sendMail($order_id)
     {
-        $purchases = Purchase::where('id_order', $order_id)->get();
+        $purchases = Purchase::with('product')->where('id_order', $order_id)->get();
+
         foreach ($purchases as $purchase) {
+            // dd($purchase->product->name);
             $purchase->status = 'send';
             $purchase->save();
         }
         Mail::to('zoki2603@gmail.com')->send(new OrderResponseMail($purchases));
         return redirect()->route("all.purchases");
     }
+
     public function sendOrder($order_id)
     {
         $service = new PurchaseService();
