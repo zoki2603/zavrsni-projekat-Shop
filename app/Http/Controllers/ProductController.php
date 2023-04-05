@@ -46,4 +46,29 @@ class ProductController extends Controller
 
         return view('layout.user.product.comingSoon', ['products' => $products]);
     }
+    public function sort(Request $request)
+    {
+
+        $sortBy = $request->input('sort_by');
+        if ($sortBy == 'name_asc') {
+            $products = Product::orderBy('name', 'asc')->paginate(8);
+        } elseif ($sortBy == 'name_desc') {
+            $products = Product::orderBy('name', 'desc')->paginate(8);
+        } elseif ($sortBy == 'price_asc') {
+            $products = Product::orderBy('price', 'asc')->paginate(8);
+        } elseif ($sortBy == 'price_desc') {
+            $products = Product::orderBy('price', 'desc')->paginate(8);
+        } else {
+            $products = Product::paginate(8);
+        }
+        return view('layout.home', ['products' => $products]);
+    }
+
+    public function searchProducts(Request $request)
+    {
+        $searchProduct = $request->input("search");
+
+        $products = Product::where('name', "LIKE", '%' . $searchProduct . '%')->paginate(8);
+        return view('layout.home', ['products' => $products]);
+    }
 }

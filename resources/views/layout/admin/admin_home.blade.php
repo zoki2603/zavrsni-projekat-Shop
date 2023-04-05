@@ -16,8 +16,9 @@
 
 
     <div class="col-3" style="margin-left:75%;">
-        <form method="GET" action="admin.php" class="d-flex">
-            <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+        <form  action="{{ route('search.admin.products') }}" method="GET" class="d-flex">
+            @csrf
+            <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
@@ -70,6 +71,15 @@
 
         </div>
     </sectoin>
+
+    
+    <span style="margin-left: 50%" class="text-center"> {{ $products->links() }}</span>
+    <style>
+     .w-5{
+         display: none;
+     }
+    </style>
+
 
     <footer>
         <p>Copyrights at <a href="">Shop</a></p>

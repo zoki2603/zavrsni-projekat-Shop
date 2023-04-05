@@ -16,6 +16,8 @@ use App\Http\Controllers\AdminCategoryProductController;
 
 Route::get('/', [ProductController::class, "index"])->name("home");
 Route::get('/coming-soon/products', [ProductController::class, 'comingSoon'])->name("coming.soon");
+Route::get('/sort/products', [ProductController::class, 'sort'])->name("sort.products");
+Route::get('/search/products', [ProductController::class, 'searchProducts'])->name("search.products");
 
 
 Route::middleware(["guest:web"])->group(function () {
@@ -42,6 +44,7 @@ Route::middleware(["guest:admin"])->group(function () {
     Route::post('/admin/login', [AdminAuthController::class, "login"])->name("admin.login");
 });
 Route::middleware(["auth:admin"])->group(function () {
+    Route::get('/admin/search/products', [AdminProductController::class, 'searchProductsAdmin'])->name("search.admin.products");
     Route::post('/admin/logout', [AdminAuthController::class, "logout"])->name("admin.logout");
     Route::get("/admin/product-category", [AdminCategoryProductController::class, "index"])->name("index.category");
     Route::post("/admin/product-category", [AdminCategoryProductController::class, "addCategory"])->name("addCategory");
@@ -65,7 +68,7 @@ Route::middleware(["guest:employee"])->group(function () {
 Route::middleware(["auth:employee,admin"])->group(function () {
     Route::get("/employee/dashbord", [EmployeeController::class, "employeeDashbord"])->name("dashbord");
     Route::get("/employee/order/{order_id}", [EmployeeController::class, "order"])->name("order");
-    Route::patch("/employee/order/{order_id}", [EmployeeController::class, "sendOrder"])->name("send.order");
+    Route::patch("/employee/order/{order_id}", [EmployeeController::class, "sendOrder"])->name("send.order.employee");
 });
 Route::middleware(["auth:employee"])->group(function () {
     Route::post('/employee/logout', [AuthEmployeeController::class, "logoutEmployee"])->name("employee.logout");

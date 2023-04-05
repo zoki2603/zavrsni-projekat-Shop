@@ -49,4 +49,11 @@ class AdminProductController extends Controller
         $product->delete();
         return redirect()->back()->with("success", "Proizvd je uspsno obrisan");
     }
+    public function searchProductsAdmin(Request $request)
+    {
+        $searchProduct = $request->input("search");
+
+        $products = Product::where('name', "LIKE", '%' . $searchProduct . '%')->paginate(8);
+        return view('layout.admin.admin_home', ['products' => $products]);
+    }
 }

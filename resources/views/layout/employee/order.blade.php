@@ -29,7 +29,7 @@
             <tbody>
           {{-- @dump($singel_purchase) --}}
           @foreach ($orders as $key=> $order )
-          <form action="{{ route("send.order",$order->id_order) }}" method="POST">
+          <form action="{{ route("send.order.employee",$order->id_order) }}" method="POST">
             @csrf
                   @method("PATCH")
     {{-- @dump($order) --}}

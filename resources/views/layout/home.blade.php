@@ -21,12 +21,14 @@
     <h1 class="pheading">All Products</h1>
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <form action="" method="GET" class="d-flex">
+        <form action="{{ route('search.products') }}" method="GET" class="d-flex">
+          @csrf
           <input type="text" name="search" class="form-control me-2" placeholder="Pretraži proizvode">
           <button type="submit" class="btn btn-primary">Pretraži</button>
         </form>
       
-        <form action="" method="GET" class="d-flex">
+        <form action="{{ route('sort.products') }}" method="GET" class="d-flex">
+          @csrf
           <select name="sort_by" class="form-select me-2" onchange="this.form.submit()">
             <option value="">Sortiraj po:</option>
             <option value="name_asc">Naziv proizvoda (A-Z)</option>
@@ -40,7 +42,7 @@
     <sectoin class="sec">
         <div class="products">
             <!-- Start Card -->
-
+           
            
            @foreach ($products as $product) 
           
