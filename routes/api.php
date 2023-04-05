@@ -15,6 +15,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Public route
 Route::post('/login', [AdminAuthApiController::class, 'login']);
+Route::get('/coming-soon/products', [ProductController::class, 'comingSoon'])->name("coming.soon");
+
 
 //Protected route
 Route::group(['middlevare' => ['auth:sanctum']], function () {

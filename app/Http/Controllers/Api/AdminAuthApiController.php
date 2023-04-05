@@ -33,8 +33,8 @@ class AdminAuthApiController extends Controller
 
     public function logout()
     {
-        if (auth()->check()) {
-            auth()->user()->currentAccessToken()->delete();
+        if (Auth::check()) {
+            Auth::user()->currentAccessToken()->delete();
 
             return $this->success([
                 'message' => 'You have successfully logged out and your token has been deleted.'

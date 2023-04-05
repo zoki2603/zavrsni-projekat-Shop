@@ -15,7 +15,6 @@ use App\Http\Controllers\AdminCategoryProductController;
 
 
 Route::get('/', [ProductController::class, "index"])->name("home");
-Route::get('/coming-soon/products', [ProductController::class, 'comingSoon'])->name("coming.soon");
 Route::get('/sort/products', [ProductController::class, 'sort'])->name("sort.products");
 Route::get('/search/products', [ProductController::class, 'searchProducts'])->name("search.products");
 
