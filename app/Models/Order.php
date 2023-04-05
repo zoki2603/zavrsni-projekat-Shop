@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use HasFactory;
-    protected $filablle  = [
+    protected $fillable  = [
         'id_user',
         'date',
     ];
@@ -19,7 +19,7 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function purchases()
+    public function purchase()
     {
         return $this->hasMany(Purchase::class);
     }

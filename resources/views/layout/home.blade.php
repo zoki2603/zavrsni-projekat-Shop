@@ -37,31 +37,6 @@
         </form>
       </div>
     
-{{-- 
-    <div class="container  ">
-        <div class="row justify-content-center align-items-center g-2 ">
-            <div class="col">
-                <form method="GET" action="home.php">
-                    <select class="form-select form-select-sm" name="sort-option" aria-label=".form-select-sm example">
-                        <option selected>Izaberi</option>
-                        <option value="ASC">Uzlazno</option>
-                        <option value="DESC">Silazno</option>
-                    </select>
-                    <div>
-                        <input type="submit" name="sort" style="margin-left: 100%;" class="btn btn-outline-primary" value="Sortiraj">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-        <div class="col-3" style="margin-left: 65%;">
-            <form method="GET" action="home.php" class="d-flex">
-                <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div> --}}
     <sectoin class="sec">
         <div class="products">
             <!-- Start Card -->

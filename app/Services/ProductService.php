@@ -18,7 +18,7 @@ class ProductService
         $product->name = $request->input("name");
         $product->price = $request->input("price");
         $product->description = $request->input("description");
-        $product->quantity = $request->input("quantity");
+        $product->total_quantity = $request->input("total_quantity");
         $product->category_id = $request->input("category_id");
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -26,8 +26,6 @@ class ProductService
             $imagePath = $image->storeAs('public/img', $imageName);
             $product->image = $imageName;
         }
-
-
         $product->save();
     }
 

@@ -31,7 +31,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="quantety" class="form-label">Quantity</label>
-                    <input type="text" class="form-control" name="quantity" id="quantety" placeholder="Quantity">
+                    <input type="text" class="form-control" name="total_quantity" id="quantety" placeholder="Quantity">
                 </div>
                 <div class="mb-3">
                     <label class="" for="category">Category</label>

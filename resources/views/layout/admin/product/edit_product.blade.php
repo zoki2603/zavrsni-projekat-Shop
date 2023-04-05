@@ -36,7 +36,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Quantity</label>
-                            <input type="text" class="form-control" name="quantity" id="quantity" value="{{ $product->quantity }}">
+                            <input type="text" class="form-control" name="total_quantity" id="quantity" value="{{ $product->total_quantity }}">
                         </div>
                         <div class="mb-3">
                             <label class="" for="category">Category</label>

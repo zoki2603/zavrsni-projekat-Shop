@@ -49,7 +49,7 @@
                                 <td><img src="{{ asset("storage/img/$product->image") }}" alt="" width="150"></td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }}$</td>
-                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->total_quantity }}</td>
                                 <td>{{ $product->description }}</td>
                                  <td><a href="{{ route("admin.edit",$product->id) }}" class="btn btn-info">Edit</a></td>
                                   {{-- </form> --}}
