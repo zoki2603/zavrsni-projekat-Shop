@@ -10,6 +10,7 @@
             
             @auth
             <li><a href="{{ route("home") }}">Home</a></li>
+            <li><a href="{{ route("coming.soon") }}">Coming soon</a></li>
             <li>
                 <form action="{{ route("user.logout") }}" method="POST">
                     @csrf

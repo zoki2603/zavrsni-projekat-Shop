@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminCategoryProductController;
 
 
 Route::get('/', [ProductController::class, "index"])->name("home");
+Route::get('/coming-soon/products', [ProductController::class, 'comingSoon'])->name("coming.soon");
 
 
 Route::middleware(["guest:web"])->group(function () {

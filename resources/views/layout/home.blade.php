@@ -60,12 +60,15 @@
             
         </div>
     </sectoin>
+
     <span style="margin-left: 50%" class="text-center"> {{ $products->links() }}</span>
     <style>
      .w-5{
          display: none;
      }
     </style>
+
+
     <footer>
         <p>Copyrights at <a href="">Shop</a></p>
     </footer>

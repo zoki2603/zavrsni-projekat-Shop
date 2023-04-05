@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-use App\Services\ProductService;
 use Illuminate\Http\Request;
+use App\Services\ProductService;
+use Illuminate\Support\Facades\Http;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -37,5 +38,12 @@ class ProductController extends Controller
         $product = new Product();
         $service->storeProduct($request, $product);
         return redirect()->route("home");
+    }
+    public function comingSoon()
+    {
+        $response = Http::get('https://dummyjson.com/products');
+        $products = $response->json();
+
+        return view('layout.user.product.comingSoon', ['products' => $products]);
     }
 }
