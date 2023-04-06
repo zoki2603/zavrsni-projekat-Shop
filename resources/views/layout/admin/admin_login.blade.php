@@ -10,6 +10,11 @@
             <h2 class="form-weight-bold">Admin Login</h2>
             <hr class="hr">
         </div>
+        @if (session('error'))
+    <div class="alert alert-danger " role="alert">
+        {{ session('error') }}
+    </div>
+@endif
         <div class="mx-auto container">
             <form action="{{ route("admin.login") }}" id="login-form" method="post">
                 @csrf

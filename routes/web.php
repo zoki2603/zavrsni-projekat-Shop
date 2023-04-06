@@ -19,6 +19,7 @@ Route::get('/sort/products', [ProductController::class, 'sort'])->name("sort.pro
 Route::get('/search/products', [ProductController::class, 'searchProducts'])->name("search.products");
 
 
+
 Route::middleware(["guest:web"])->group(function () {
     Route::get('/login', [UserAuthController::class, "loginShow"])->name("user.show.login");
     Route::post('/login', [UserAuthController::class, "login"])->name("user.login");

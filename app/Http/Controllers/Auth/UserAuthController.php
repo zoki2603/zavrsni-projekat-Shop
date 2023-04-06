@@ -44,7 +44,7 @@ class UserAuthController extends Controller
         );
 
         return $success ? redirect()->route("home") : redirect()->back()->with([
-            'email' => "Podaci nisu dobri"
+            'error' => "Podaci nisu dobri"
         ]);
     }
 

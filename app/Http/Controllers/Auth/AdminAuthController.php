@@ -25,12 +25,9 @@ class AdminAuthController extends Controller
             $request->input("email"),
             $request->input("password")
         );
-
-        return $success ?
-            redirect()->route("admin.index") :
-            redirect()->back()->withErrors([
-                'email' => 'Podaci nisu dobri',
-            ]);
+        return $success ? redirect()->route("admin.index") : redirect()->back()->with([
+            'error' => "Podaci nisu dobri"
+        ]);
     }
     public function logout()
     {

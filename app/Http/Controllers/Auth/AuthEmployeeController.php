@@ -50,6 +50,7 @@ class AuthEmployeeController extends Controller
         $employee = new Employee();
         $success = $service->registerEmployee($request, $employee);
 
-        return  redirect()->back()->with(["message", "Uspesno ste kreirali zaposnenog"]);
+        return $success ? redirect()->back()->with(["success", "Uspesno ste kreirali zaposnenog"]) :
+            redirect()->back()->with(["error", "Niste uspesno  kreirali zaposnenog"]);
     }
 }

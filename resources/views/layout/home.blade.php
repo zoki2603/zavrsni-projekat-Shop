@@ -24,13 +24,13 @@
         <form action="{{ route('search.products') }}" method="GET" class="d-flex">
           @csrf
           <input type="text" name="search" class="form-control me-2" placeholder="Pretraži proizvode">
-          <button type="submit" class="btn btn-primary">Pretraži</button>
+          <button type="submit" class="btn btn-primary">Search</button>
         </form>
       
         <form action="{{ route('sort.products') }}" method="GET" class="d-flex">
           @csrf
           <select name="sort_by" class="form-select me-2" onchange="this.form.submit()">
-            <option value="">Sortiraj po:</option>
+            <option value="">Sort by:</option>
             <option value="name_asc">Naziv proizvoda (A-Z)</option>
             <option value="name_desc">Naziv proizvoda (Z-A)</option>
             <option value="price_asc">Cena (najniža prvo)</option>
@@ -38,7 +38,11 @@
           </select>
         </form>
       </div>
-    
+      @if(session('success'))
+      <div class="alert alert-success">
+          {{ session('success') }}
+      </div>
+  @endif
     <sectoin class="sec">
         <div class="products">
             <!-- Start Card -->

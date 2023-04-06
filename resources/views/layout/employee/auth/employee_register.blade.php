@@ -10,12 +10,18 @@
             <h2 class="form-weight-bold">Register Employee</h2>
             <hr class="hr">
         </div>
-        @if (session('message'))
-        <div class="alert alert-danger" role="alert">
-           {{ session('message') }}
-          </div>
-            
-        @endif
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+@endif
         </div>
         <div class="mx-auto container ">
             <form action="{{ route('employee.register') }}" id="login-form" method="post">

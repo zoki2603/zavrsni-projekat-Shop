@@ -10,6 +10,7 @@ use App\Services\ProductService;
 use App\Traits\HttpResponses;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProductApiController extends Controller
 {
@@ -45,7 +46,7 @@ class ProductApiController extends Controller
         try {
             return new ProductResources($product);
         } catch (Exception $e) {
-            return $e->getMessage();
+            return $this->error('', "This product does not exist ", 404);
         }
     }
 
@@ -66,5 +67,14 @@ class ProductApiController extends Controller
     {
         $product->delete();
         return $this->success("", "successful deletion", 200);
+    }
+    public function searchApiProduct(Request $request)
+    {
+        $category = $request->input('search');
+
+        $search = Http::get('https://dummyjson.com/products/search?q=' . $category);
+        $products = $search->json();
+
+        return view('layout.user.product.comingSoon', ['products' => $products]);
     }
 }

@@ -24,21 +24,20 @@ class AdminAuthApiController extends Controller
         }
 
         $user = User::where('email', $request->email)->first();
+        // $user = auth()->user();
 
         return $this->success([
             'user' => $user,
-            'token' => $user->createToken('Api Token of ' . $user->username)->plainTextToken
+            'token' => $user->createToken('Api Token of ' . $user->first_name)->plainTextToken
         ]);
     }
 
     public function logout()
     {
-        if (Auth::check()) {
-            Auth::user()->currentAccessToken()->delete();
+        auth()->user()->currentAccessToken()->delete();
 
-            return $this->success([
-                'message' => 'You have successfully logged out and your token has been deleted.'
-            ]);
-        }
+        return $this->success([
+            'message' => 'You have successfully logged out and your token has been deleted.'
+        ]);
     }
 }

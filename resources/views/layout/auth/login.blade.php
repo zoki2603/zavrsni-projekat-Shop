@@ -11,15 +11,18 @@
             <h2 class="form-weight-bold">Login</h2>
             <hr class="hr">
         </div>
+        @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
         <div class="mx-auto container">
             <form action="{{ route("user.login") }}" id="login-form" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="">Email</label>
                     <input type="text" class="form-control" id="login-email" name="email" placeholder="Email">
-                    @error('email')
-                    <p class="text-danger">{{ $message }}</p>
-                    @enderror
+                
                 </div>
                 <div class="form-group">
                     <label for="">Password</label>
