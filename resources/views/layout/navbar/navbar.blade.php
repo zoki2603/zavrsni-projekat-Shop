@@ -4,6 +4,9 @@
     </div>
     <ul class="menu">
             @guest
+            <li><a style="color:rgb(81, 58, 212);" href="https://documenter.getpostman.com/view/25274927/2s93RZMpc8" target="_blank">Postman API documentation</a></li>
+            <li><a style="color:rgb(81, 58, 212);"  href="https://github.com/zoki2603/zavrsni-projekat-Shop">My GitHub</a></li>
+            <li><a style="color:rgb(81, 58, 212);" href="{{ route('project.documentation') }}">Download documentation</a></li>
             <li><a href="{{ route("user.show.login") }}">Login</a></li>
             <li><a href="{{ route("user.show.register") }}">Registar</a></li>
             @endguest

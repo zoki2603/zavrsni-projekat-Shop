@@ -4,7 +4,7 @@
     
 @endsection
 @section("main-content")
-    <h1 class="pheading">DASHBORD</h1>
+    <h1 class="pheading">DASHBOARD</h1>
 
     <sectoin class="sec">
         <div class="products">

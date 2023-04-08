@@ -21,7 +21,7 @@
             {{ session('error') }}
         </div>
     @endif
-@endif
+
         </div>
         <div class="mx-auto container ">
             <form action="{{ route('employee.register') }}" id="login-form" method="post">

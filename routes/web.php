@@ -25,6 +25,10 @@ Route::middleware(["guest:web"])->group(function () {
     Route::post('/login', [UserAuthController::class, "login"])->name("user.login");
     Route::get('/register', [UserAuthController::class, "registerShow"])->name("user.show.register");
     Route::post('/register', [UserAuthController::class, "register"])->name('user.register');
+    Route::get('documentation', function () {
+        $path = storage_path('app/public/documentation/Dokumentacija projekta.pdf');
+        return response()->download($path);
+    })->name('project.documentation');
 });
 Route::middleware(["auth:web,admin"])->group(function () {
     Route::post('/user/logout', [UserAuthController::class, "logout"])->name("user.logout");

@@ -11,6 +11,7 @@
             <h2 class="form-weight-bold">Login</h2>
             <hr class="hr">
         </div>
+        
         @if(session('error'))
     <div class="alert alert-danger">
         {{ session('error') }}
