@@ -18,7 +18,7 @@ class PurchaseApiController extends Controller
     public function singlePurchase($order_id)
     {
 
-        $purchase = Purchase::with(['user', 'product'])->where('id_order', '=', $order_id)->first();
-        return new PurchaseResource($purchase);
+        $purchase = Purchase::with(['user', 'product'])->where('id_order', '=', $order_id)->get();
+        return  PurchaseResource::collection($purchase);
     }
 }

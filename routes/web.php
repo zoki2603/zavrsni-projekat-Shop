@@ -13,7 +13,7 @@ use App\Http\Controllers\AdminCategoryProductController;
 
 
 
-
+//rute koje su dostupne svima
 Route::get('/', [ProductController::class, "index"])->name("home");
 Route::get('/sort/products', [ProductController::class, 'sort'])->name("sort.products");
 Route::get('/search/products', [ProductController::class, 'searchProducts'])->name("search.products");
@@ -21,10 +21,13 @@ Route::get('/search/products', [ProductController::class, 'searchProducts'])->na
 
 
 Route::middleware(["guest:web"])->group(function () {
+    //login user
     Route::get('/login', [UserAuthController::class, "loginShow"])->name("user.show.login");
     Route::post('/login', [UserAuthController::class, "login"])->name("user.login");
+    //register user
     Route::get('/register', [UserAuthController::class, "registerShow"])->name("user.show.register");
     Route::post('/register', [UserAuthController::class, "register"])->name('user.register');
+    //za daownload dokumentacije
     Route::get('documentation', function () {
         $path = storage_path('app/public/documentation/Dokumentacija projekta.pdf');
         return response()->download($path);

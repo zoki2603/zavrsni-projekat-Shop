@@ -17,6 +17,11 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session('error'))
+        <div class="alert alert-danger " role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
         
 
                     <form action="{{ route("admin.update",$product->id) }}" class="row justify-content-md-center" method="post" enctype="multipart/form-data">
