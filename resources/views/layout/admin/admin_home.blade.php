@@ -22,7 +22,11 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
-
+    @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     <sectoin class="sec">
 
         <div class="products">

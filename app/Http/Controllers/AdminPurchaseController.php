@@ -37,7 +37,7 @@ class AdminPurchaseController extends Controller
             $purchase->status = 'send';
             $purchase->save();
         }
-        Mail::to('zoki2603@gmail.com')->send(new OrderResponseMail($purchases));
+        Mail::to($purchase->user->email)->send(new OrderResponseMail($purchases));
         return redirect()->route("all.purchases");
     }
 
