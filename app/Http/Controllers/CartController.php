@@ -62,9 +62,4 @@ class CartController extends Controller
             return redirect()->back();
         }
     }
-    // public function emptyCart()
-    // {
-    //     Session::forget('cartItems');
-    //     return redirect()->back();
-    // }
 }

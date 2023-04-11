@@ -29,6 +29,7 @@
     <div class="container">
       <h1 class="mb-5">Proizvodi</h1>
       <div class="row row-cols-1 row-cols-md-3 g-4">
+        
         @foreach($products["products"] as $product)
           <div class="col">
             <div class="card h-100">

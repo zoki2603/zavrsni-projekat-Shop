@@ -51,7 +51,7 @@
                  
                   
                   <input type="hidden" name="order_id" value="{{ $order->id_product }}">
-                  <button type="submit" class="btn btn-warning"{{ $order->status === "ready" ? 'disabled' : " " }}>
+                  <button type="submit" class="btn btn-warning"{{ $order->status === "ready" || $order->status === "send" ? 'disabled' : " " }}>
                     <i class="fas fa-truck"></i> Send
                   </button>
                     </form>
